@@ -1,0 +1,11 @@
+services:
+  rstudio:
+    build: . # Construye la imagen usando el Dockerfile en el directorio actual
+    ports:
+      - "8787:8787" # Mapea el puerto del contenedor al host
+    volumes:
+      - .:/home/rstudio/project # Monta el directorio actual del host al contenedor
+    environment:
+      PASSWORD: swirlify # <<--- CAMBIA ESTO por tu contraseña segura
+    container_name: swirlify_dev # Nombre amigable para el contenedor
+    restart: unless-stopped # Se reinicia si el Docker se detiene, a menos que lo pares explícitamente
